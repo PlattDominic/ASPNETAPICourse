@@ -10,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<CarsAPIDbContext>(options => options.UseInMemoryDatabase("CarsDb"));
+//builder.Services.AddDbContext<CarsAPIDbContext>(options => options.UseInMemoryDatabase("CarsDb"));
+builder.Services.AddDbContext<CarsAPIDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("CarsApiConnectionString")));
 
 var app = builder.Build();
 
